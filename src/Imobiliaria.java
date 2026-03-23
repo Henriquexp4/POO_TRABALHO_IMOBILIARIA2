@@ -43,7 +43,7 @@ public class Imobiliaria {
     static void menuImoveis() {
         int op = -1;
         while (op != 0) {
-            IO.println("\n── IMÓVEIS ──");
+            IO.println("IMÓVEIS");
             IO.println("1. Cadastrar  2. Listar  3. Associar proprietário  0. Voltar");
             IO.print("Escolha: ");
             op = lerInt();
@@ -155,7 +155,7 @@ public class Imobiliaria {
     static void menuUsuarios() {
         int op = -1;
         while (op != 0) {
-            IO.println("\n── CLIENTES USUÁRIOS ──");
+            IO.println("CLIENTES USUÁRIOS");
             IO.println("1. Cadastrar  2. Listar  3. Adicionar fiador/indicação  0. Voltar");
             IO.print("Escolha: ");
             op = lerInt();
@@ -165,7 +165,7 @@ public class Imobiliaria {
                     if (sistema.getUsuarios().isEmpty()) { IO.println("Nenhum cadastrado."); break; }
                     sistema.getUsuarios().forEach(u -> {
                         IO.println(u);
-                        IO.println("   └─ Fiadores: " + u.getFiador() + " | Indicações: " + u.getIndicacao());
+                        IO.println("    Fiadores: " + u.getFiador() + "  Indicações: " + u.getIndicacao());
                     });
                 }
                 case 3 -> adicionarFiadorIndicacao();
@@ -200,7 +200,7 @@ public class Imobiliaria {
     static void menuFuncionarios() {
         int op = -1;
         while (op != 0) {
-            IO.println("\n── FUNCIONÁRIOS ──");
+            IO.println("FUNCIONÁRIOS");
             IO.println("1. Cadastrar  2. Listar  0. Voltar");
             IO.print("Escolha: ");
             op = lerInt();
@@ -213,7 +213,7 @@ public class Imobiliaria {
     }
 
     static void cadastrarFuncionario() {
-        IO.println("\n── Cadastrar Funcionário ──");
+        IO.println("Cadastrar Funcionário");
         IO.print("Nome: "); String nome = lerLinha();
         IO.print("CPF: "); String cpf = lerLinha();
         IO.print("Email: "); String email = lerLinha();
@@ -229,7 +229,8 @@ public class Imobiliaria {
         sistema.cadastrarFuncionario(new Funcionario(nome, end, cpf, sexo, ec, prof, email, dataIng, cargo, sal, login, senha));
     }
     static void realizarVenda() {
-        IO.println("\n── Realizar Venda ──");
+        IO.println("Realizar Venda");
+
         List<Imovel> disp = sistema.imoveisDIsponiveisVenda();
         if (disp.isEmpty()) { IO.println("Nenhum imóvel disponível para venda."); return; }
         if (sistema.getUsuarios().isEmpty()) { IO.println("Nenhum cliente usuário cadastrado."); return; }
@@ -244,8 +245,8 @@ public class Imobiliaria {
         IO.println("1.PIX  2.Cartão  3.Boleto  4.Dinheiro  5.Cheque");
         IO.print("Forma de pagamento: "); TipoTransacao fp = lerFormaPagamento();
         IO.print("Valor de venda (R$): "); double val = lerDouble();
-        IO.print("% comissão imobiliária: "); double pctI = lerDouble();
-        IO.print("% comissão funcionário: "); double pctF = lerDouble();
+        IO.print("comissão imobiliária: "); double pctI = lerDouble();
+        IO.print(" comissão funcionário: "); double pctF = lerDouble();
 
         Imovel imo = disp.stream().filter(x -> x.getId() == idImo).findFirst().orElse(null);
         if (imo == null || idxU < 0 || idxU >= sistema.getUsuarios().size() || idxF < 0 || idxF >= sistema.getFuncionarios().size()) { IO.println("Dados inválidos."); return; }
@@ -274,8 +275,8 @@ public class Imobiliaria {
         IO.print("Forma de pagamento: "); TipoTransacao fp = lerFormaPagamento();
         IO.print("Valor do aluguel (R$): "); double val = lerDouble();
         IO.print("Duração (meses): "); int meses = lerInt();
-        IO.print("% comissão imobiliária: "); double pctI = lerDouble();
-        IO.print("% comissão funcionário: "); double pctF = lerDouble();
+        IO.print("comissão imobiliária: "); double pctI = lerDouble();
+        IO.print("comissão funcionário: "); double pctF = lerDouble();
 
         Imovel imo = disp.stream().filter(x -> x.getId() == idImo).findFirst().orElse(null);
         if (imo == null || idxU < 0 || idxU >= sistema.getUsuarios().size() || idxF < 0 || idxF >= sistema.getFuncionarios().size()) { IO.println("Dados inválidos."); return; }
@@ -313,7 +314,7 @@ public class Imobiliaria {
         }
     }
     static Endereco lerEndereco() {
-        IO.println("── Endereço ──");
+        IO.println("Endereço");
         IO.print("Rua: "); String rua = lerLinha();
         IO.print("Número: "); String num = lerLinha();
         IO.print("Complemento: "); String comp = lerLinha();
