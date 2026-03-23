@@ -13,8 +13,7 @@ public abstract class Transacao {
     protected Double comissaoImobiliaria;
     protected Double comissaoFuncionario;
 
-    public Transacao( Double comissaoFuncionario, Double comissaoImobiliaria,
-                     LocalDate dataTransacao, TipoTransacao formaPagamento,
+    public Transacao( Double comissaoFuncionario, Double comissaoImobiliaria, TipoTransacao formaPagamento,
                      Funcionario funcionario, ClienteUsuario clienteUsuario, Imovel imovel) {
         this.numeroContrato = contadorContrato++;
         this.comissaoFuncionario = comissaoFuncionario;
@@ -25,6 +24,7 @@ public abstract class Transacao {
         this.clienteUsuario = clienteUsuario;
         this.imovel = imovel;
     }
+    public abstract String tipoTransacao();
 
     public static int getContadorContrato() {
         return contadorContrato;
